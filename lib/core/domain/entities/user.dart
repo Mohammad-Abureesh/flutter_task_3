@@ -4,7 +4,9 @@ class User {
 
   String? _password;
 
-  User._(this.email, this.username, this._password);
+  DateTime _createdAt;
+  User._(this.email, this.username, this._password)
+      : _createdAt = DateTime.now();
   User.create(
       {required String username,
       required String email,
@@ -24,4 +26,11 @@ class User {
 
   @override
   int get hashCode => username.hashCode ^ email.hashCode;
+
+  String get joinAt => _createdAt.toIso8601String();
+
+  bool validCredential(String nameOrEmail, String password) {
+    return _password == password &&
+        (nameOrEmail == username || nameOrEmail == email);
+  }
 }

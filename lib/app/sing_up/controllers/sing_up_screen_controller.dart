@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_task_3/app/login/controllers/register_form_controller.dart';
 import 'package:flutter_task_3/app/sing_up/screens/verification_screen.dart';
 import 'package:flutter_task_3/core/domain/entities/user.dart';
+import 'package:flutter_task_3/core/domain/repositories/users_repository.dart';
 import 'package:flutter_task_3/core/utils/verification_code_generator.dart';
 
 List<User> users = [];
@@ -28,12 +29,13 @@ class SingUpScreenController extends RegisterFormController {
         email: emailController.text.trim(),
         password: passwordController.text.trim());
 
-    if (users.any((e) => e == user)) return;
+    final repo = UsersRepository();
+    if (repo.isExist(user)) return;
 
     bool verified = await _openVerificationScreen(context!);
     if (!verified) return;
 
-    users.add(user);
+    await repo.create(user);
     if (context.mounted) Navigator.pop(context);
   }
 }

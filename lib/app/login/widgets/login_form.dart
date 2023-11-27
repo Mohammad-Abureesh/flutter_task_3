@@ -32,7 +32,11 @@ class LoginForm extends StatelessWidget {
           ]),
           gap,
           gap,
-          SubmitButton(title: 'Login', onPressed: _controller.onSubmit)
+          SubmitButton(
+              title: 'Login',
+              onPressed: () {
+                _controller.onSubmit(context);
+              })
         ],
       ),
     );
