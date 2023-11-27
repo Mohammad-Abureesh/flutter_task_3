@@ -7,7 +7,9 @@ class UsersRepository {
 
   factory UsersRepository() => _repo;
 
-  final List<User> _users = [];
+  final List<User> _users = [
+    User.create(username: 'mm', email: 'mm', password: 'mm')
+  ];
 
   bool isExist(User user) {
     return _users.any((e) => e == user);

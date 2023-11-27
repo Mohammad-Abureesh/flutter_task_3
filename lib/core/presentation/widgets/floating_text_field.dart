@@ -26,6 +26,7 @@ class FloatingTextField extends StatelessWidget {
 
   final ValueChanged<String?>? onChanged;
 
+  final Widget? prefixIcon;
   const FloatingTextField(
       {Key? key,
       this.controller,
@@ -39,7 +40,8 @@ class FloatingTextField extends StatelessWidget {
       this.radius,
       this.counterText,
       this.focusNode,
-      this.onChanged})
+      this.onChanged,
+      this.prefixIcon})
       : super(key: key);
 
   @override
@@ -65,6 +67,7 @@ class FloatingTextField extends StatelessWidget {
                 focusNode: focusNode,
                 onChanged: onChanged,
                 decoration: InputDecoration(
+                    prefixIcon: prefixIcon,
                     border: InputBorder.none,
                     counterText: counterText,
                     contentPadding: const EdgeInsets.all(10.0),
