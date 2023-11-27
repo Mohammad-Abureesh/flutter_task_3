@@ -6,12 +6,26 @@ class RegistrationHeader extends StatelessWidget {
   final String? info;
 
   const RegistrationHeader({Key? key, this.title, this.info}) : super(key: key);
+  const RegistrationHeader.forSingUp({
+    Key? key,
+  }) : this(
+            key: key,
+            title: 'Sing Up',
+            info: 'Please enter your information below to sing up');
+
   const RegistrationHeader.forLogin({
     Key? key,
   }) : this(
             key: key,
             title: 'Welcome back!',
             info: 'Login to your exiting account');
+
+  const RegistrationHeader.forResendVerification({
+    Key? key,
+  }) : this(
+            key: key,
+            title: 'Verification',
+            info: 'Please enter OTP code sent to you by SMS');
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +38,7 @@ class RegistrationHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         TextWidget(data: title ?? '', fontWeight: FontWeight.bold, size: 25.0),
-        Text(info ?? '')
+        TextWidget(data: info ?? '')
       ],
     );
   }

@@ -18,8 +18,8 @@ class SubmitButton extends StatelessWidget {
 
     return ElevatedButton(
         style: ButtonStyle(
-          minimumSize:
-              MaterialStatePropertyAll(Size(double.infinity, _fieldHeight)),
+          minimumSize: const MaterialStatePropertyAll(
+              Size(double.infinity, _fieldHeight)),
           shape: MaterialStatePropertyAll(RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius))),
           backgroundColor:

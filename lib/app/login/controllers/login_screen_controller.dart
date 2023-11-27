@@ -1,20 +1,18 @@
-import 'package:flutter/material.dart';
+import 'register_form_controller.dart';
 
-class LoginScreenController {
-  TextEditingController emailController;
-  TextEditingController passwordController;
+class LoginScreenController extends RegisterFormController {
+  bool rememberMe;
 
-  bool rememberMe = false;
-
-  LoginScreenController()
-      : emailController = TextEditingController(),
-        passwordController = TextEditingController();
-
-  void onLogin() {}
+  LoginScreenController() : rememberMe = false;
 
   void onRememberChanged(bool? value) {
     rememberMe = value ?? false;
   }
 
   void onForgetPassword() {}
+
+  @override
+  void onSubmit() {
+    // TODO: implement onSubmit
+  }
 }
