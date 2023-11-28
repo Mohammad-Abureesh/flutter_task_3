@@ -1,6 +1,9 @@
 enum ProductsFilter {
-  forYou,
-  featured,
+  forYou('Special for you'),
+  featured('Featured Products'),
 
-  bestSelling
+  bestSelling('Best Selling Products');
+
+  const ProductsFilter(this.title);
+  final String title;
 }
