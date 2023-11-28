@@ -1,8 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_task_3/core/domain/entities/product.dart';
-import 'package:flutter_task_3/core/domain/entities/products_response.dart';
+
+import '/core/domain/entities/product.dart';
+import '/core/domain/entities/products_response.dart';
 
 const int _defaultLimit = 10;
 
@@ -30,6 +31,7 @@ class ProductsRepository {
 
   List<Product> get forYouProducts =>
       _randomFromLimits(products, _defaultLimit);
+
   List<Product> get bestSellingProducts {
     List<int> minStock = products.map((e) => e.stock).toSet().toList();
     minStock.sort();
@@ -40,6 +42,11 @@ class ProductsRepository {
   List<Product> get bestRatingProducts =>
       filter((p0) => p0.rating > 3, limit: _defaultLimit);
 
+  List<Product> filter(bool Function(Product) test, {int? limit}) {
+    List<Product> list = products.where(test).toList();
+    return _randomFromLimits(list, limit);
+  }
+
   List<Product> _randomFromLimits(List<Product> data, int? limit) {
     data.shuffle();
 
@@ -47,10 +54,5 @@ class ProductsRepository {
       data = data.take(limit).toList();
     }
     return data;
-  }
-
-  List<Product> filter(bool Function(Product) test, {int? limit}) {
-    List<Product> list = products.where(test).toList();
-    return _randomFromLimits(list, limit);
   }
 }

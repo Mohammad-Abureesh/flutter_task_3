@@ -1,4 +1,4 @@
-import 'package:flutter_task_3/core/domain/entities/user.dart';
+import '/core/domain/entities/user.dart';
 
 class UsersRepository {
   static final UsersRepository _repo = UsersRepository._internalRepo();

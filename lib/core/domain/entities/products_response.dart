@@ -3,6 +3,7 @@ import 'package:flutter_task_3/core/utils/json_convertor.dart';
 
 class ProductsResponse {
   List<Product?>? _products;
+
   int? _total;
 
   ProductsResponse._(this._products, this._total);

@@ -1,16 +1,13 @@
 class Product {
   final int? _id;
-
   final int? _stock;
 
   final String? _image;
   final String? _name;
-
   final String? _description;
   final String? _category;
 
   final num? _price;
-
   final num? _rating;
 
   Product._(this._id, this._image, this._name, this._description,
