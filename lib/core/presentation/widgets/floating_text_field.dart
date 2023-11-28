@@ -21,6 +21,7 @@ class FloatingTextField extends StatelessWidget {
   final String? counterText;
 
   final TextAlign textAlign;
+  final TextAlignVertical? textAlignVertical;
 
   final FocusNode? focusNode;
 
@@ -41,7 +42,8 @@ class FloatingTextField extends StatelessWidget {
       this.counterText,
       this.focusNode,
       this.onChanged,
-      this.prefixIcon})
+      this.prefixIcon,
+      this.textAlignVertical})
       : super(key: key);
 
   @override
@@ -66,6 +68,7 @@ class FloatingTextField extends StatelessWidget {
                 textAlign: textAlign,
                 focusNode: focusNode,
                 onChanged: onChanged,
+                textAlignVertical: textAlignVertical,
                 decoration: InputDecoration(
                     prefixIcon: prefixIcon,
                     border: InputBorder.none,

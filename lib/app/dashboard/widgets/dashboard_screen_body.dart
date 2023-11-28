@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/dashboard/widgets/product_details_card.dart';
-import 'package:flutter_task_3/core/domain/repositories/products_repository.dart';
+import 'package:flutter_task_3/app/dashboard/controllers/dashboard_screen_controller.dart';
+import 'package:flutter_task_3/core/enums/e_products_filter.dart';
+
+import 'products_custom_view.dart';
 
 class DashboardScreenBody extends StatefulWidget {
   const DashboardScreenBody({Key? key}) : super(key: key);
@@ -10,14 +12,17 @@ class DashboardScreenBody extends StatefulWidget {
 }
 
 class _DashboardScreenBodyState extends State<DashboardScreenBody> {
-  bool loading = true;
+  _DashboardScreenBodyState()
+      : loading = true,
+        _controller = DashboardScreenController();
 
-  final ProductsRepository _repository = ProductsRepository();
+  final DashboardScreenController _controller;
+  bool loading = true;
 
   @override
   void initState() {
     super.initState();
-    _repository.init().then((value) {
+    _controller.init().then((value) {
       _updateLoadingState = false;
     });
   }
@@ -32,9 +37,17 @@ class _DashboardScreenBodyState extends State<DashboardScreenBody> {
   Widget build(BuildContext context) {
     if (loading) return const CircularProgressIndicator();
 
-    return ListView.builder(
-        itemCount: _repository.products.length,
-        itemBuilder: (_, index) =>
-            ProductDetailsCard(product: _repository.products.elementAt(index)));
+    return Padding(
+        padding: const EdgeInsets.only(left: 8.0, top: 15.0),
+        child: SingleChildScrollView(
+            child: Column(
+                children: ProductsFilter.values.map(_viewBuilder).toList())));
+  }
+
+  Widget _viewBuilder(ProductsFilter filter) {
+    return ProductsCustomView(
+        enableOtherStyle: filter == ProductsFilter.forYou,
+        data: _controller.fromFilter(filter),
+        filter: filter);
   }
 }

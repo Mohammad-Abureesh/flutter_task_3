@@ -14,10 +14,7 @@ class DashboardBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BottomNavigationBar(
-        selectedItemColor: theme.primaryColor,
-        unselectedItemColor: theme.hintColor,
         items: _items
             .map((icon) => BottomNavigationBarItem(label: '', icon: Icon(icon)))
             .toList());

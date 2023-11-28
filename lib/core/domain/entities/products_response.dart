@@ -11,7 +11,7 @@ class ProductsResponse {
     return ProductsResponse._(
         JsonConvertor<Product>()
             .nullableIterable(json['products'], Product.fromJson)
-            .toList(),
+            ?.toList(),
         json['total']);
   }
 
