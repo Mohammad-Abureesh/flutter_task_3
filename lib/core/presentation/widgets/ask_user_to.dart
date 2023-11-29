@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_task_3/app/login/screens/login_screen.dart';
 import 'package:flutter_task_3/app/sing_up/screens/sign_up_screen.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
+import 'package:flutter_task_3/core/utils/animated_route.dart';
 
 class AskUserTo extends StatelessWidget {
   final String _message;
@@ -17,7 +18,7 @@ class AskUserTo extends StatelessWidget {
             'Already have an account?',
             'Sign in',
             (context) => Navigator.pushReplacement(
-                context, _AnimatedRoute(builder: () => const LoginScreen())),
+                context, AnimatedRoute.to(const LoginScreen())),
             key: key);
 
   AskUserTo.signUp({
@@ -25,8 +26,8 @@ class AskUserTo extends StatelessWidget {
   }) : this._(
             'Don\'t have an account?',
             'Sign Up',
-            (context) => Navigator.push(
-                context, _AnimatedRoute(builder: () => const SignUpScreen())),
+            (context) =>
+                Navigator.push(context, AnimatedRoute.to(const SignUpScreen())),
             key: key);
 
   const AskUserTo.resendVerification(
@@ -48,20 +49,4 @@ class AskUserTo extends StatelessWidget {
           ))
     ]);
   }
-}
-
-class _AnimatedRoute extends PageRouteBuilder {
-  _AnimatedRoute({required Widget Function() builder})
-      : super(
-            pageBuilder: (context, animation, secAnim) => builder.call(),
-            transitionDuration: const Duration(milliseconds: 600),
-            transitionsBuilder: (BuildContext context,
-                Animation<double> animation,
-                Animation<double> secAnimation,
-                Widget child) {
-              return SlideTransition(
-                  position: animation.drive(
-                      Tween(begin: const Offset(-1, 0), end: Offset.zero)),
-                  child: child);
-            });
 }
