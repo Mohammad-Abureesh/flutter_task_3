@@ -16,8 +16,8 @@ class AskUserTo extends StatelessWidget {
       : this._(
             'Already have an account?',
             'Sign in',
-            (context) => Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const LoginScreen())),
+            (context) => Navigator.pushReplacement(
+                context, _AnimatedRoute(builder: () => const LoginScreen())),
             key: key);
 
   AskUserTo.signUp({
@@ -25,8 +25,8 @@ class AskUserTo extends StatelessWidget {
   }) : this._(
             'Don\'t have an account?',
             'Sign Up',
-            (context) => Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const SignUpScreen())),
+            (context) => Navigator.push(
+                context, _AnimatedRoute(builder: () => const SignUpScreen())),
             key: key);
 
   const AskUserTo.resendVerification(
@@ -48,4 +48,20 @@ class AskUserTo extends StatelessWidget {
           ))
     ]);
   }
+}
+
+class _AnimatedRoute extends PageRouteBuilder {
+  _AnimatedRoute({required Widget Function() builder})
+      : super(
+            pageBuilder: (context, animation, secAnim) => builder.call(),
+            transitionDuration: const Duration(milliseconds: 600),
+            transitionsBuilder: (BuildContext context,
+                Animation<double> animation,
+                Animation<double> secAnimation,
+                Widget child) {
+              return SlideTransition(
+                  position: animation.drive(
+                      Tween(begin: const Offset(-1, 0), end: Offset.zero)),
+                  child: child);
+            });
 }
