@@ -95,3 +95,17 @@ class FloatingPasswordField extends FloatingTextField {
           hint: 'e.g ${'*' * 10}',
         );
 }
+
+class FloatingSearchField extends StatelessWidget {
+  final String? hint;
+  final ValueChanged<String?>? onSearch;
+  const FloatingSearchField({super.key, this.hint, this.onSearch});
+
+  @override
+  Widget build(BuildContext context) => FloatingTextField(
+      textAlignVertical: TextAlignVertical.center,
+      onChanged: onSearch,
+      hint: hint ?? 'Search',
+      radius: 25.0,
+      prefixIcon: Icon(Icons.search, color: Theme.of(context).primaryColor));
+}

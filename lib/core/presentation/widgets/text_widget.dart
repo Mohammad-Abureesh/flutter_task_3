@@ -22,6 +22,16 @@ class TextWidget extends StatelessWidget {
       this.overflow})
       : super(key: key);
 
+  const TextWidget.bold(
+      {Key? key,
+      required this.data,
+      this.color,
+      this.size,
+      this.maxLines,
+      this.overflow})
+      : fontWeight = FontWeight.bold,
+        super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Text(

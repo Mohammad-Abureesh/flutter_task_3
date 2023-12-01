@@ -1,53 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task_3/core/presentation/widgets/default_app_bar_state.dart';
 import 'package:flutter_task_3/core/presentation/widgets/floating_text_field.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
 
-class DashboardAppBar extends StatelessWidget implements PreferredSizeWidget {
+class DashboardAppBar extends DefaultAppBarState {
   const DashboardAppBar({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    const double lRPadding = 20.0;
+  Widget child(BuildContext context) {
     const gap = SizedBox(width: 20.0);
 
-    return const SafeArea(
-        child: Padding(
-            padding: EdgeInsets.only(
-              top: 15.0,
-              left: lRPadding,
-              right: lRPadding,
-            ),
-            child: Row(
-              children: [
-                _SearchField(),
-                gap,
-                _CartButton(count: 5),
-                gap,
-                _ActionButton(icon: Icons.notifications_none_sharp),
-              ],
-            )));
+    return const Row(children: [
+      _SearchField(),
+      gap,
+      _CartButton(count: 5),
+      gap,
+      _ActionButton(icon: Icons.notifications_none_sharp)
+    ]);
   }
 
   @override
   Size get preferredSize => const Size.fromHeight(180.0);
 }
 
-class _SearchField extends StatelessWidget {
-  const _SearchField();
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: FloatingTextField(
-          textAlignVertical: TextAlignVertical.center,
-          hint: 'Search Product',
-          radius: 25.0,
-          prefixIcon: Icon(
-            Icons.search,
-            color: Theme.of(context).primaryColor,
-          )),
-    );
-  }
+class _SearchField extends FloatingSearchField {
+  const _SearchField() : super(hint: 'Search Product');
 }
 
 class _ActionButton extends StatelessWidget {
