@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_3/app/categories/screens/categories_dashboard.dart';
 import 'package:flutter_task_3/app/dashboard/screens/dashboard_screen.dart';
+import 'package:flutter_task_3/core/extensions/string_ext.dart';
 
 ///Bottom navigation bar elements
 enum BottomBarItems {
@@ -14,10 +15,7 @@ enum BottomBarItems {
 
   final IconData icon;
 
-  String get label {
-    String first = name.characters.first;
-    return name.replaceFirst(first, first.toUpperCase());
-  }
+  String get label => name.toUpperFirstChar;
 
   Widget Function() get routeBuilder {
     return switch (this) {
