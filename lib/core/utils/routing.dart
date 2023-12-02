@@ -10,6 +10,10 @@ class Routing {
     return () async => await _routing.open(context, screen);
   }
 
+  static void replace(BuildContext context, Widget screen) {
+    of(context, screen)?.call();
+  }
+
   Future<R?> open<R>(BuildContext context, Widget screen) async {
     return await Navigator.push<R>(context, AnimatedRoute<R>.to(screen));
   }
