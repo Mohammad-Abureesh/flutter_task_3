@@ -60,7 +60,8 @@ class ProductDetailsCard extends StatelessWidget {
               width: width,
               height: height,
               padding: EdgeInsets.zero,
-              decoration: _CardDecoration(product.image, opacity),
+              decoration:
+                  ProductCardDecoration(product.image, opacity: opacity),
               child: Align(alignment: subChildAlign, child: subChild))),
     );
 
@@ -111,8 +112,8 @@ class _FavoriteButton extends StatelessWidget {
   }
 }
 
-class _CardDecoration extends BoxDecoration {
-  _CardDecoration(String img, double? opacity)
+class ProductCardDecoration extends BoxDecoration {
+  ProductCardDecoration(String img, {double? opacity})
       : super(
             image: img.isNotEmpty
                 ? DecorationImage(
@@ -120,4 +121,6 @@ class _CardDecoration extends BoxDecoration {
                     image: NetworkImage(img),
                     fit: BoxFit.cover)
                 : null);
+
+  ProductCardDecoration.halfOpacity(String img) : this(img, opacity: 0.5);
 }

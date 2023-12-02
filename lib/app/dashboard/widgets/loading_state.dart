@@ -1,36 +1,21 @@
 import 'package:flutter/material.dart';
 
-abstract class FutureLoadingState extends StatefulWidget {
-  const FutureLoadingState({Key? key}) : super(key: key);
+class FutureLoadingState extends StatelessWidget {
+  final Future<void> Function() onInit;
+  final Widget Function(BuildContext context) builder;
 
-  @override
-  State<FutureLoadingState> createState() => _FutureLoadingStateState();
-
-  Widget build(BuildContext context);
-
-  Future<void> onInit();
-}
-
-class _FutureLoadingStateState extends State<FutureLoadingState> {
-  bool loading = true;
-
-  @override
-  void initState() {
-    super.initState();
-    widget.onInit().then((value) {
-      _updateLoadingState = false;
-    });
-  }
-
-  set _updateLoadingState(bool value) {
-    if (!mounted) return;
-    loading = value;
-    setState(() {});
-  }
+  const FutureLoadingState(
+      {Key? key, required this.onInit, required this.builder})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    if (loading) return const CircularProgressIndicator();
-    return widget.build(context);
+    return FutureBuilder(
+        future: onInit.call(),
+        builder: (BuildContext context, AsyncSnapshot<void> snapshot) =>
+            switch (snapshot.connectionState) {
+              ConnectionState.done => builder.call(context),
+              _ => const CircularProgressIndicator()
+            });
   }
 }
