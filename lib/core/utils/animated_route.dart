@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 //TODO: add more animation options
-class AnimatedRoute extends PageRouteBuilder {
+class AnimatedRoute<R> extends PageRouteBuilder<R> {
   AnimatedRoute.to(Widget screen)
       : super(
             pageBuilder: (BuildContext context, Animation<double> animation,

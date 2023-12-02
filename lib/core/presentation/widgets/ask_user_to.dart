@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_3/app/sing_up/screens/sign_up_screen.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
-import 'package:flutter_task_3/core/utils/animated_route.dart';
+import 'package:flutter_task_3/core/utils/routing.dart';
 
 class AskUserTo extends StatelessWidget {
   final String _message;
@@ -19,11 +19,8 @@ class AskUserTo extends StatelessWidget {
 
   AskUserTo.signUp({
     Key? key,
-  }) : this._(
-            'Don\'t have an account?',
-            'Sign Up',
-            (context) =>
-                Navigator.push(context, AnimatedRoute.to(const SignUpScreen())),
+  }) : this._('Don\'t have an account?', 'Sign Up',
+            (context) => Routing.of(context, const SignUpScreen())?.call(),
             key: key);
 
   const AskUserTo.resendVerification(
