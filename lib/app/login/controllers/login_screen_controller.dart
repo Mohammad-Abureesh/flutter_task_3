@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/dashboard/screens/dashboard_screen.dart';
+import 'package:flutter_task_3/app/dashboard/screens/main_screen_container.dart';
 import 'package:flutter_task_3/core/domain/entities/user.dart';
 import 'package:flutter_task_3/core/domain/repositories/users_repository.dart';
+import 'package:flutter_task_3/core/utils/routing.dart';
 
 import 'register_form_controller.dart';
 
@@ -32,7 +33,6 @@ class LoginScreenController extends RegisterFormController {
   }
 
   void _toDashboard(BuildContext context, User user) {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (_) => const DashboardScreen()));
+    Routing.replace(context, const MainScreenContainer());
   }
 }
