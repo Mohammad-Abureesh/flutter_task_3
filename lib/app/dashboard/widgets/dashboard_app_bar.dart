@@ -11,7 +11,7 @@ class DashboardAppBar extends DefaultAppBarState {
     const gap = SizedBox(width: 20.0);
 
     return const Row(children: [
-      _SearchField(),
+      Expanded(child: _SearchField()),
       gap,
       _CartButton(count: 5),
       gap,
