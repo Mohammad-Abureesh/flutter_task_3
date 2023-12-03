@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task_3/core/domain/repositories/products_repository.dart';
 import 'package:flutter_task_3/core/presentation/widgets/default_app_bar_state.dart';
 import 'package:flutter_task_3/core/presentation/widgets/floating_text_field.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
@@ -10,12 +11,12 @@ class DashboardAppBar extends DefaultAppBarState {
   Widget child(BuildContext context) {
     const gap = SizedBox(width: 20.0);
 
-    return const Row(children: [
-      Expanded(child: _SearchField()),
+    return Row(children: [
+      const Expanded(child: _SearchField()),
       gap,
-      _CartButton(count: 5),
+      _CartButton(count: ProductsRepository().numberOfItemsInCart),
       gap,
-      _ActionButton(icon: Icons.notifications_none_sharp)
+      const _ActionButton(icon: Icons.notifications_none_sharp)
     ]);
   }
 
@@ -30,6 +31,7 @@ class _SearchField extends FloatingSearchField {
 class _ActionButton extends StatelessWidget {
   final IconData icon;
   final VoidCallback? onPressed;
+
   const _ActionButton({this.onPressed, required this.icon});
 
   @override
@@ -39,11 +41,19 @@ class _ActionButton extends StatelessWidget {
     return SizedBox.square(
         dimension: 35.0,
         child: FloatingActionButton(
+            heroTag: _DynamicHeroTag(icon.codePoint.toString()),
             onPressed: onPressed,
             backgroundColor: theme.scaffoldBackgroundColor,
             elevation: 5.0,
             child: Icon(icon, color: theme.primaryColor)));
   }
+}
+
+class _DynamicHeroTag {
+  final String data;
+  const _DynamicHeroTag(this.data);
+  @override
+  String toString() => '$data${DateTime.now().millisecond}';
 }
 
 class _CartButton extends _ActionButton {

@@ -12,6 +12,9 @@ class TextWidget extends StatelessWidget {
   final int? maxLines;
 
   final TextOverflow? overflow;
+
+  final TextDecoration? decoration;
+
   const TextWidget(
       {Key? key,
       required this.data,
@@ -19,7 +22,8 @@ class TextWidget extends StatelessWidget {
       this.fontWeight,
       this.size,
       this.maxLines,
-      this.overflow})
+      this.overflow,
+      this.decoration})
       : super(key: key);
 
   const TextWidget.bold(
@@ -28,7 +32,8 @@ class TextWidget extends StatelessWidget {
       this.color,
       this.size,
       this.maxLines,
-      this.overflow})
+      this.overflow,
+      this.decoration})
       : fontWeight = FontWeight.bold,
         super(key: key);
 
@@ -38,7 +43,11 @@ class TextWidget extends StatelessWidget {
       data,
       maxLines: maxLines,
       overflow: overflow,
-      style: TextStyle(color: color, fontSize: size, fontWeight: fontWeight),
+      style: TextStyle(
+          color: color,
+          decoration: decoration,
+          fontSize: size,
+          fontWeight: fontWeight),
     );
   }
 }

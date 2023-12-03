@@ -5,4 +5,8 @@ abstract class Pallet {
   static const secondary = Color(0xff302559);
   static const lightPurple = Color(0xff977EF2);
   static const lightGrey = Color(0xffF2F2F2);
+
+  static List<Color> get productColors {
+    return [Colors.black, Colors.grey, secondary, primary];
+  }
 }

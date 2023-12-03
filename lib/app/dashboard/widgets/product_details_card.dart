@@ -119,8 +119,9 @@ class _FavoriteButton extends StatelessWidget {
 }
 
 class ProductCardDecoration extends BoxDecoration {
-  ProductCardDecoration(String img, {double? opacity})
+  ProductCardDecoration(String img, {BoxBorder? border, double? opacity})
       : super(
+            border: border,
             image: img.isNotEmpty
                 ? DecorationImage(
                     opacity: opacity ?? 1.0,
