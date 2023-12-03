@@ -15,7 +15,7 @@ class FutureLoadingState extends StatelessWidget {
         builder: (BuildContext context, AsyncSnapshot<void> snapshot) =>
             switch (snapshot.connectionState) {
               ConnectionState.done => builder.call(context),
-              _ => const CircularProgressIndicator()
+              _ => const Center(child: CircularProgressIndicator())
             });
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/dashboard/widgets/loading_state.dart';
+import 'package:flutter_task_3/core/presentation/widgets/loading_state.dart';
 
 import '/app/dashboard/controllers/dashboard_screen_controller.dart';
 import '/core/enums/e_products_filter.dart';
