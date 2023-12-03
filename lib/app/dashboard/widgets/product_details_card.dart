@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task_3/app/dashboard/screens/product_info_screen.dart';
 import 'package:flutter_task_3/core/domain/entities/product.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
+import 'package:flutter_task_3/core/utils/routing.dart';
 
 const double productCardHeight = 180.0;
 
@@ -84,9 +86,13 @@ class ProductDetailsCard extends StatelessWidget {
               ]));
     }
 
-    return SizedBox(
-        height: height,
-        child: Padding(padding: outerPadding, child: mainChild));
+    return InkWell(
+      onTap: Routing.of(context, ProductInfoScreen(product: product)),
+      borderRadius: borderRadius,
+      child: SizedBox(
+          height: height,
+          child: Padding(padding: outerPadding, child: mainChild)),
+    );
   }
 }
 
@@ -123,4 +129,6 @@ class ProductCardDecoration extends BoxDecoration {
                 : null);
 
   ProductCardDecoration.halfOpacity(String img) : this(img, opacity: 0.5);
+
+  ProductCardDecoration.fromProduct(Product product) : this(product.image);
 }
