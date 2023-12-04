@@ -12,24 +12,36 @@ class DefaultSearchAppBar extends DefaultAppBarState {
 
   final double height;
 
+  final Widget? suffix;
+
   const DefaultSearchAppBar({
+    Key? key,
+    this.suffix,
     this.onSearch,
     this.title,
     this.searchHint,
-    Key? key,
     this.height = 120.0,
   }) : super(key: key);
 
   @override
-  Widget child(BuildContext context) => Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const Spacer(),
-            AppBarTitleText(title: title),
-            const Spacer(),
-            FloatingSearchField(hint: searchHint, onSearch: onSearch)
-          ]);
+  Widget child(BuildContext context) {
+    Widget search = FloatingSearchField(hint: searchHint, onSearch: onSearch);
+
+    //change layout to if has [suffix] widget
+    if (suffix != null) {
+      search = Row(children: [Expanded(child: search), suffix!]);
+    }
+
+    return Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          const Spacer(),
+          AppBarTitleText(title: title),
+          const Spacer(),
+          search
+        ]);
+  }
 
   @override
   Size get preferredSize => Size.fromHeight(height);

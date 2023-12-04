@@ -1,9 +1,10 @@
 import 'dart:ui';
 
-import 'package:flutter_task_3/core/domain/entities/category_entity.dart';
-import 'package:flutter_task_3/core/domain/repositories/categories_repository.dart';
+import '/core/domain/entities/category_entity.dart';
+import '/core/domain/mixins/search_mixin.dart';
+import '/core/domain/repositories/categories_repository.dart';
 
-class CategoriesScreenController {
+class CategoriesScreenController with SearchMixin {
   CategoriesScreenController() : categories = [];
 
   List<CategoryEntity> categories;
@@ -17,6 +18,7 @@ class CategoriesScreenController {
     _notifyState = value;
   }
 
+  @override
   void search(String? query) {
     query ??= '';
     if (query.isEmpty) {
