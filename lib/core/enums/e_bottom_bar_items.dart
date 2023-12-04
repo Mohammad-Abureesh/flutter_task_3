@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_3/app/categories/screens/categories_dashboard.dart';
 import 'package:flutter_task_3/app/dashboard/screens/dashboard_screen.dart';
+import 'package:flutter_task_3/app/explore/screens/search_dashboard.dart';
 import 'package:flutter_task_3/app/profile/screens/user_profile_dashboard.dart';
 import 'package:flutter_task_3/core/extensions/string_ext.dart';
 
@@ -23,6 +24,7 @@ enum BottomBarItems {
       home => () => const DashboardScreen(),
       categories => () => const CategoriesDashboard(),
       profile => () => const UserProfileDashboard(),
+      search => () => const SearchDashboard(),
       _ => () => const SizedBox.shrink()
     };
   }
