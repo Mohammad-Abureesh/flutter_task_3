@@ -21,9 +21,9 @@ class _CategoriesGridViewState extends State<CategoriesGridView> {
   @override
   void initState() {
     super.initState();
-    widget.controller.notify = () {
+    widget.controller.addListener(() {
       setState(() {});
-    };
+    });
   }
 
   @override

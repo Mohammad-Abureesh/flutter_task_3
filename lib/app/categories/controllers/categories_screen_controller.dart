@@ -1,21 +1,15 @@
-import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 
 import '/core/domain/entities/category_entity.dart';
 import '/core/domain/mixins/search_mixin.dart';
 import '/core/domain/repositories/categories_repository.dart';
 
-class CategoriesScreenController with SearchMixin {
+class CategoriesScreenController with SearchMixin, ChangeNotifier {
   CategoriesScreenController() : categories = [];
 
   List<CategoryEntity> categories;
   Future<void> init() async {
     categories = CategoriesRepository().extractCategoriesFromProducts;
-  }
-
-  VoidCallback? _notifyState;
-
-  set notify(VoidCallback value) {
-    _notifyState = value;
   }
 
   @override
@@ -35,6 +29,6 @@ class CategoriesScreenController with SearchMixin {
   }
 
   void _notify() {
-    _notifyState?.call();
+    notifyListeners();
   }
 }
