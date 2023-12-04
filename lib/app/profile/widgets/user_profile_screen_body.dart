@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/core/domain/entities/user.dart';
-import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
-import 'package:flutter_task_3/core/utils/session.dart';
+import 'package:flutter_task_3/app/profile/controllers/profile_screen_controller.dart';
+import 'package:flutter_task_3/app/profile/widgets/profile_settings_list_view.dart';
+import 'package:flutter_task_3/app/profile/widgets/user_avatar.dart';
 
 class UserProfileScreenBody extends StatelessWidget {
-  const UserProfileScreenBody({Key? key}) : super(key: key);
+  UserProfileScreenBody({Key? key})
+      : _controller = ProfileScreenController(),
+        super(key: key);
 
+  final ProfileScreenController _controller;
   @override
   Widget build(BuildContext context) {
-    User user = Session.user;
+    const double lRPadding = 15.0;
 
-    return Center(
-      child: Card(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextWidget(data: user.username),
-            TextWidget(data: user.email),
-            TextWidget(data: 'Join at ${user.joinAt}'),
-          ],
+    return Padding(
+        padding: const EdgeInsets.only(
+          top: 40.0,
+          left: lRPadding,
+          right: lRPadding,
         ),
-      ),
-    );
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          UserAvatar(user: _controller.user),
+          const SizedBox(height: 25.0),
+          const ProfileSettingsListView(),
+        ]));
   }
 }
