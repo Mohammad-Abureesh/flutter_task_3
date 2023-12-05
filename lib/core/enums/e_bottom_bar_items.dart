@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/categories/screens/categories_dashboard.dart';
-import 'package:flutter_task_3/app/dashboard/screens/dashboard_screen.dart';
-import 'package:flutter_task_3/app/explore/screens/search_dashboard.dart';
-import 'package:flutter_task_3/app/profile/screens/user_profile_dashboard.dart';
-import 'package:flutter_task_3/core/extensions/string_ext.dart';
+
+import '/app/categories/screens/categories_dashboard.dart';
+import '/app/dashboard/screens/dashboard_screen.dart';
+import '/app/explore/screens/search_dashboard.dart';
+import '/app/favorites/screens/favorites_dashboard.dart';
+import '/app/profile/screens/user_profile_dashboard.dart';
+import '/core/extensions/string_ext.dart';
 
 ///Bottom navigation bar elements
 enum BottomBarItems {
@@ -25,7 +27,7 @@ enum BottomBarItems {
       categories => () => const CategoriesDashboard(),
       profile => () => const UserProfileDashboard(),
       search => () => const SearchDashboard(),
-      _ => () => const SizedBox.shrink()
+      favorites => () => const FavoritesDashboard()
     };
   }
 
