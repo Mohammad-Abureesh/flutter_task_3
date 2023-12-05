@@ -7,3 +7,7 @@ extension StringExt on String {
     return replaceFirst(first, first.toUpperCase());
   }
 }
+
+extension NullableStringExt on String? {
+  bool get isNullOrEmpty => this == null || this!.isEmpty;
+}
