@@ -1,0 +1,1 @@
+enum EFavoriteType { product, category }

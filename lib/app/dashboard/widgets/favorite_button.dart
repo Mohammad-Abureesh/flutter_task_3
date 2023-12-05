@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task_3/core/domain/repositories/products_repository.dart';
 
 import 'product_details_card.dart';
 
@@ -16,6 +17,14 @@ class _FavoriteButtonState extends State<FavoriteButton> {
   @override
   void initState() {
     super.initState();
+    isFavorite = ProductsRepository().inFavorites(widget.productId);
+  }
+
+  void _onPressed() {
+    if (!mounted) return;
+    isFavorite =
+        ProductsRepository().addOrRemoveToFavorites(widget.productId).state;
+    setState(() {});
   }
 
   @override
@@ -30,8 +39,8 @@ class _FavoriteButtonState extends State<FavoriteButton> {
                   topLeft: Radius.circular(mainProductCardRadius / 1.5))),
           child: IconButton(
               padding: EdgeInsets.zero,
-              onPressed: null,
-              icon: Icon(Icons.favorite_border,
+              onPressed: _onPressed,
+              icon: Icon(isFavorite ? Icons.favorite : Icons.favorite_border,
                   color: Theme.of(context).primaryColor)),
         ));
   }
