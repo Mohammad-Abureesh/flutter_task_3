@@ -6,7 +6,7 @@ class EmptyListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => const Center(
-        child: Column(children: [
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
           Icon(Icons.receipt_long, size: 100.0),
           TextWidget(data: 'Oops no result found!')
         ]),

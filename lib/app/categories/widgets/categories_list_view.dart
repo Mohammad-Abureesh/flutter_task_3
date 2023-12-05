@@ -27,6 +27,12 @@ class _CategoriesGridViewState extends State<CategoriesGridView> {
   }
 
   @override
+  void dispose() {
+    widget.controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     if (widget.controller.categories.isEmpty) {
       return const EmptyListView();
