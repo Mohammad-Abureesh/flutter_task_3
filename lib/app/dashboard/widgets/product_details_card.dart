@@ -4,10 +4,12 @@ import 'package:flutter_task_3/core/domain/entities/product.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
 import 'package:flutter_task_3/core/utils/routing.dart';
 
+import 'favorite_button.dart';
+
 const double productCardHeight = 180.0;
 
 ///Base product card radius
-const double _mainRadius = 20.0;
+const double mainProductCardRadius = 20.0;
 
 class ProductDetailsCard extends StatelessWidget {
   final Product product;
@@ -48,10 +50,10 @@ class ProductDetailsCard extends StatelessWidget {
     } else {
       outerPadding = const EdgeInsets.symmetric(horizontal: 8.0);
       subChildAlign = Alignment.bottomRight;
-      subChild = const _FavoriteButton();
+      subChild = FavoriteButton(productId: product.id);
     }
 
-    BorderRadius borderRadius = BorderRadius.circular(_mainRadius);
+    BorderRadius borderRadius = BorderRadius.circular(mainProductCardRadius);
     Widget mainChild = Material(
       elevation: 5.0,
       borderRadius: borderRadius,
@@ -93,28 +95,6 @@ class ProductDetailsCard extends StatelessWidget {
           height: height,
           child: Padding(padding: outerPadding, child: mainChild)),
     );
-  }
-}
-
-class _FavoriteButton extends StatelessWidget {
-  const _FavoriteButton();
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox.fromSize(
-        size: const Size.square(30.0),
-        child: Card(
-          margin: EdgeInsets.zero,
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(_mainRadius),
-                  topLeft: Radius.circular(_mainRadius / 1.5))),
-          child: IconButton(
-              padding: EdgeInsets.zero,
-              onPressed: null,
-              icon: Icon(Icons.favorite_border,
-                  color: Theme.of(context).primaryColor)),
-        ));
   }
 }
 
