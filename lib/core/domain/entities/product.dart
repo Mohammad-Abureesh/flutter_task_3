@@ -65,4 +65,6 @@ class Product {
   bool get outOfStock => !inStock;
 
   List<String> get slider => _images?.whereType<String>().toList() ?? [];
+
+  Set<String> get searchInfo => {name, description, category};
 }
