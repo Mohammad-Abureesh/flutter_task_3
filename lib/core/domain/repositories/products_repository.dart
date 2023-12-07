@@ -37,6 +37,8 @@ class ProductsRepository {
 
   int get numberOfItemsInCart => _myCart.length;
 
+  List<CartItem> get allInMyCart => _myCart;
+
   List<Product> get products => _data.products;
 
   List<Product> get forYouProducts =>
@@ -82,6 +84,15 @@ class ProductsRepository {
     }
 
     _myCart.add(CartItem.pushOne(product.id));
+  }
+
+  void removeFromMyCart(Product product) {
+    var item = findCartItemByProductId(product.id);
+    if (item == null) return;
+    item.decrement();
+    if (item.zeroQuantity) {
+      _myCart.remove(item);
+    }
   }
 
   CartItem? findCartItemByProductId(int id) {
