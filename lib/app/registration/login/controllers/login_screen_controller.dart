@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/dashboard/screens/main_screen_container.dart';
 import 'package:flutter_task_3/core/domain/entities/user.dart';
 import 'package:flutter_task_3/core/domain/repositories/users_repository.dart';
+import 'package:flutter_task_3/core/enums/e_app_pages.dart';
 import 'package:flutter_task_3/core/utils/routing.dart';
 import 'package:flutter_task_3/core/utils/session.dart';
 
@@ -36,6 +36,6 @@ class LoginScreenController extends RegisterFormController {
   ///On success login init current session then open main screen
   void _toDashboard(BuildContext context, User user) {
     Session.initSession(user, rememberMe);
-    Routing.replace(context, const MainScreenContainer());
+    Routing.replaceFromAppPage(context, EAppPages.mainScreen);
   }
 }

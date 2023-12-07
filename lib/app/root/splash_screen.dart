@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_3/core/constants/images.dart';
 import 'package:flutter_task_3/core/enums/e_app_pages.dart';
-import 'package:flutter_task_3/core/utils/pages_manager.dart';
 import 'package:flutter_task_3/core/utils/routing.dart';
 import 'package:flutter_task_3/core/utils/session.dart';
 
@@ -12,6 +11,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 2), () {
       EAppPages page;
+
       if (Session.isLogged) {
         Session.initFromStorage();
         page = EAppPages.mainScreen;
@@ -19,7 +19,7 @@ class SplashScreen extends StatelessWidget {
         page = EAppPages.login;
       }
 
-      Routing.replace(context, PagesManager.routeBuilder(page).call());
+      Routing.replaceFromAppPage(context, page);
     });
 
     return Image.asset(

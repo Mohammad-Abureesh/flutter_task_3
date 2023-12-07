@@ -12,8 +12,12 @@ class Routing {
     return () async => await _routing.open(context, screen);
   }
 
-  static void replace(BuildContext context, Widget screen) {
-    of(context, screen)?.call();
+  static void replace<R>(BuildContext context, Widget screen) {
+    Navigator.pushReplacement(context, AnimatedRoute<R>.to(screen));
+  }
+
+  static void replaceFromAppPage(BuildContext context, EAppPages page) {
+    replace(context, PagesManager.routeBuilder(page).call());
   }
 
   static VoidCallback? fromAppPage(BuildContext context, EAppPages page) {
