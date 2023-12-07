@@ -5,5 +5,6 @@ enum EAppPages {
   categories,
   profile,
   search,
-  favorites;
+  favorites,
+  myCart;
 }

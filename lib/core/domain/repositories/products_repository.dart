@@ -77,8 +77,11 @@ class ProductsRepository {
   }
 
   void addToMyCart(Product product) {
+    if (product.outOfStock) return;
+
     var item = findCartItemByProductId(product.id);
     if (item != null) {
+      if (item.quantity == product.stock) return;
       _myCart[_myCart.indexOf(item)].increment();
       return;
     }
@@ -102,6 +105,8 @@ class ProductsRepository {
   Product _findProductById(int id) {
     return products.firstWhere((element) => element.id == id);
   }
+
+  Product Function(int id) get findProductCallback => _findProductById;
 
   void removeAllFromCart() {
     _myCart = [];

@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_task_3/app/cart/screens/my_cart_screen.dart';
 import 'package:flutter_task_3/app/categories/screens/categories_dashboard.dart';
 import 'package:flutter_task_3/app/dashboard/screens/dashboard_screen.dart';
 import 'package:flutter_task_3/app/dashboard/screens/main_screen_container.dart';
@@ -22,7 +23,8 @@ class PagesManager {
       EAppPages.categories => () => const CategoriesDashboard(),
       EAppPages.profile => () => const UserProfileDashboard(),
       EAppPages.search => () => const SearchDashboard(),
-      EAppPages.favorites => () => const FavoritesDashboard()
+      EAppPages.favorites => () => const FavoritesDashboard(),
+      EAppPages.myCart => () => const MyCartScreen()
     };
 
     return builder;

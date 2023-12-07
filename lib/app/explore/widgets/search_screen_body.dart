@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_3/app/explore/controllers/search_screen_controller.dart';
+import 'package:flutter_task_3/core/domain/repositories/products_repository.dart';
 
 import 'short_products_info_list_view.dart';
 
@@ -27,10 +28,8 @@ class _SearchScreenBodyState extends State<SearchScreenBody> {
     const double padding = 20.0;
     return ShortProductsInfoListView(
         padding: const EdgeInsets.only(
-          top: padding * 2,
-          left: padding,
-          right: padding,
-        ),
+            top: padding * 2, left: padding, right: padding),
+        onAddToCart: ProductsRepository().addToMyCart,
         products: widget.controller.products);
   }
 }

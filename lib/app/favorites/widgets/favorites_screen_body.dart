@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_3/app/explore/widgets/short_products_info_list_view.dart';
 import 'package:flutter_task_3/app/favorites/controllers/favorites_screen_controller.dart';
+import 'package:flutter_task_3/core/domain/repositories/products_repository.dart';
 import 'package:flutter_task_3/core/presentation/widgets/loading_state.dart';
 
 class FavoritesScreenBody extends StatelessWidget {
@@ -45,6 +46,7 @@ class _FavoritesProductsListStateState
           left: padding,
           right: padding,
         ),
+        onAddToCart: ProductsRepository().addToMyCart,
         products: widget.controller.favorites);
   }
 }

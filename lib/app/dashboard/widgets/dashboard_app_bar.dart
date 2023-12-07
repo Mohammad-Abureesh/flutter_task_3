@@ -16,9 +16,10 @@ class DashboardAppBar extends DefaultAppBarState {
     return Row(children: [
       const Expanded(child: _SearchField()),
       gap,
-      _CartButton(
-          count: ProductsRepository().numberOfItemsInCart,
-          onPressed: Routing.fromAppPage(context, EAppPages.myCart)),
+      Builder(
+          builder: (context) => _CartButton(
+              count: ProductsRepository().numberOfItemsInCart,
+              onPressed: Routing.fromAppPage(context, EAppPages.myCart))),
       gap,
       const _ActionButton(icon: Icons.notifications_none_sharp)
     ]);
