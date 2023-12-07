@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/login/widgets/login_screen_body.dart';
-import 'package:flutter_task_3/core/presentation/widgets/ask_user_to.dart';
+
+import '/app/registration/login/widgets/login_screen_body.dart';
+import '/core/presentation/widgets/ask_user_to.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

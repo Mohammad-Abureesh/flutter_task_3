@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/sing_up/controllers/sing_up_screen_controller.dart';
-import 'package:flutter_task_3/core/presentation/widgets/floating_text_field.dart';
-import 'package:flutter_task_3/core/presentation/widgets/submit_button.dart';
+
+import '/app/registration/sing_up/controllers/sing_up_screen_controller.dart';
+import '/core/presentation/widgets/floating_text_field.dart';
+import '/core/presentation/widgets/submit_button.dart';
 
 class SingUpForm extends StatelessWidget {
   SingUpForm({Key? key})

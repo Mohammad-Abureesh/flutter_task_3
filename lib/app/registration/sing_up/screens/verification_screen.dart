@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/sing_up/widgets/default_app_bar.dart';
-import 'package:flutter_task_3/app/sing_up/widgets/verification_screen_body.dart';
+
+import '/app/registration/sing_up/widgets/default_app_bar.dart';
+import '/app/registration/sing_up/widgets/verification_screen_body.dart';
 
 class VerificationScreen extends StatelessWidget {
   const VerificationScreen({Key? key}) : super(key: key);

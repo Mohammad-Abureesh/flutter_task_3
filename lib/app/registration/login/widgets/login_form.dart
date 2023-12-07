@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/login/controllers/login_screen_controller.dart';
-import 'package:flutter_task_3/core/presentation/widgets/floating_text_field.dart';
-import 'package:flutter_task_3/core/presentation/widgets/submit_button.dart';
-import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
+
+import '/app/registration/login/controllers/login_screen_controller.dart';
+import '/core/presentation/widgets/floating_text_field.dart';
+import '/core/presentation/widgets/submit_button.dart';
+import '/core/presentation/widgets/text_widget.dart';
 
 class LoginForm extends StatelessWidget {
   LoginForm({Key? key})

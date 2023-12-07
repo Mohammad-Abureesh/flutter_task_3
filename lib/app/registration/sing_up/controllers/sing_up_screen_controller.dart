@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/login/controllers/register_form_controller.dart';
-import 'package:flutter_task_3/app/sing_up/screens/verification_screen.dart';
-import 'package:flutter_task_3/core/domain/entities/user.dart';
-import 'package:flutter_task_3/core/domain/repositories/users_repository.dart';
-import 'package:flutter_task_3/core/utils/verification_code_generator.dart';
+
+import '/app/registration/login/controllers/register_form_controller.dart';
+import '/app/registration/sing_up/screens/verification_screen.dart';
+import '/core/domain/entities/user.dart';
+import '/core/domain/repositories/users_repository.dart';
+import '/core/utils/verification_code_generator.dart';
 
 List<User> users = [];
 

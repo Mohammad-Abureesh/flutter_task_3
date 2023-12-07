@@ -4,8 +4,8 @@ import 'package:flutter_task_3/app/dashboard/screens/dashboard_screen.dart';
 import 'package:flutter_task_3/app/dashboard/screens/main_screen_container.dart';
 import 'package:flutter_task_3/app/explore/screens/search_dashboard.dart';
 import 'package:flutter_task_3/app/favorites/screens/favorites_dashboard.dart';
-import 'package:flutter_task_3/app/login/screens/login_screen.dart';
 import 'package:flutter_task_3/app/profile/screens/user_profile_dashboard.dart';
+import 'package:flutter_task_3/app/registration/login/screens/login_screen.dart';
 import 'package:flutter_task_3/core/enums/e_app_pages.dart';
 
 typedef PageBuilder = Widget Function();

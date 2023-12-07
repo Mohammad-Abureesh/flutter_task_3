@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/login/widgets/registration_header.dart';
-import 'package:flutter_task_3/app/sing_up/controllers/verification_screen_controller.dart';
-import 'package:flutter_task_3/core/presentation/widgets/ask_user_to.dart';
-import 'package:flutter_task_3/core/presentation/widgets/submit_button.dart';
 
+import '/app/registration/login/widgets/registration_header.dart';
+import '/app/registration/sing_up/controllers/verification_screen_controller.dart';
+import '/core/presentation/widgets/ask_user_to.dart';
+import '/core/presentation/widgets/submit_button.dart';
 import 'otp_field.dart';
 
 class VerificationScreenBody extends StatelessWidget {

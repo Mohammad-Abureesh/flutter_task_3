@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/sing_up/screens/sign_up_screen.dart';
-import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
-import 'package:flutter_task_3/core/utils/routing.dart';
+
+import '/app/registration/sing_up/screens/sign_up_screen.dart';
+import '/core/presentation/widgets/text_widget.dart';
+import '/core/utils/routing.dart';
 
 class AskUserTo extends StatelessWidget {
   final String _message;
