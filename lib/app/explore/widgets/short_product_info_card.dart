@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '/app/dashboard/screens/product_info_screen.dart';
 import '/app/dashboard/widgets/product_details_card.dart';
 import '/core/domain/entities/product.dart';
 import '/core/presentation/widgets/text_widget.dart';
-import '/core/utils/routing.dart';
 
 class ShortProductInfoCard extends StatelessWidget {
   const ShortProductInfoCard(
@@ -40,7 +38,7 @@ class ShortProductInfoCard extends StatelessWidget {
     final borderRadius = BorderRadius.circular(radius);
     return InkWell(
       borderRadius: borderRadius,
-      onTap: Routing.of(context, ProductInfoScreen(product: product)),
+      onTap: product.openProductInfoScreenCallback(context),
       child: Card(
         elevation: 4.0,
         shadowColor: Colors.grey.shade200,

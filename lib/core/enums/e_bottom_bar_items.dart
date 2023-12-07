@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '/app/categories/screens/categories_dashboard.dart';
-import '/app/dashboard/screens/dashboard_screen.dart';
-import '/app/explore/screens/search_dashboard.dart';
-import '/app/favorites/screens/favorites_dashboard.dart';
-import '/app/profile/screens/user_profile_dashboard.dart';
+import '/core/enums/e_app_pages.dart';
 import '/core/extensions/string_ext.dart';
+import '/core/utils/pages_manager.dart';
 
 ///Bottom navigation bar elements
 enum BottomBarItems {
@@ -22,13 +19,15 @@ enum BottomBarItems {
   String get label => name.toUpperFirstChar;
 
   Widget Function() get routeBuilder {
-    return switch (this) {
-      home => () => const DashboardScreen(),
-      categories => () => const CategoriesDashboard(),
-      profile => () => const UserProfileDashboard(),
-      search => () => const SearchDashboard(),
-      favorites => () => const FavoritesDashboard()
+    final page = switch (this) {
+      home => EAppPages.home,
+      categories => EAppPages.categories,
+      profile => EAppPages.profile,
+      search => EAppPages.search,
+      favorites => EAppPages.favorites
     };
+
+    return PagesManager.routeBuilder(page);
   }
 
   factory BottomBarItems.fromIndex(int index) {

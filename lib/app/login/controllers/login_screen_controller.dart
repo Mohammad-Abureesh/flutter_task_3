@@ -35,7 +35,7 @@ class LoginScreenController extends RegisterFormController {
 
   ///On success login init current session then open main screen
   void _toDashboard(BuildContext context, User user) {
-    Session.initSession(user);
+    Session.initSession(user, rememberMe);
     Routing.replace(context, const MainScreenContainer());
   }
 }

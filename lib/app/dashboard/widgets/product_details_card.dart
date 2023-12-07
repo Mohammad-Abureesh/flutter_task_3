@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/dashboard/screens/product_info_screen.dart';
 import 'package:flutter_task_3/core/domain/entities/product.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
-import 'package:flutter_task_3/core/utils/routing.dart';
 
 import 'favorite_button.dart';
 
@@ -89,7 +87,7 @@ class ProductDetailsCard extends StatelessWidget {
     }
 
     return InkWell(
-      onTap: Routing.of(context, ProductInfoScreen(product: product)),
+      onTap: product.openProductInfoScreenCallback(context),
       borderRadius: borderRadius,
       child: SizedBox(
           height: height,

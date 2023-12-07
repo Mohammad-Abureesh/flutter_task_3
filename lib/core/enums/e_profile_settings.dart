@@ -9,7 +9,8 @@ enum EProfileSettings {
   myCards(Icons.credit_card_sharp),
   settings(Icons.settings),
   privacyPolicy(Icons.receipt_long_outlined),
-  faq(Icons.info_outline);
+  faq(Icons.info_outline),
+  logout(Icons.logout);
 
   const EProfileSettings(this.icon);
   final IconData icon;

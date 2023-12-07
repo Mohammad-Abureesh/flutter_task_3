@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_task_3/app/dashboard/screens/product_info_screen.dart';
+import 'package:flutter_task_3/core/utils/routing.dart';
+
 class Product {
   final int? _id;
   final int? _stock;
@@ -67,4 +71,10 @@ class Product {
   List<String> get slider => _images?.whereType<String>().toList() ?? [];
 
   Set<String> get searchInfo => {name, description, category};
+}
+
+extension ProductInfoRouteExt on Product {
+  VoidCallback? openProductInfoScreenCallback(BuildContext context) {
+    return Routing.of(context, ProductInfoScreen(product: this));
+  }
 }

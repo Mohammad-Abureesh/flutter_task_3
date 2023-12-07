@@ -16,6 +16,9 @@ class User {
   Map<String, dynamic> get toJson =>
       {'email': email, 'password': _password, 'username': username};
 
+  factory User.fromJson(Map<String, dynamic> json) {
+    return User._(json['email'], json['username'], json['password']);
+  }
   @override
   bool operator ==(Object other) {
     if (other is! User) return false;
