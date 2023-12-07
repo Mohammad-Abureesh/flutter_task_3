@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_task_3/core/domain/repositories/products_repository.dart';
+import 'package:flutter_task_3/core/enums/e_app_pages.dart';
 import 'package:flutter_task_3/core/presentation/widgets/default_app_bar_state.dart';
 import 'package:flutter_task_3/core/presentation/widgets/floating_text_field.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
+import 'package:flutter_task_3/core/utils/routing.dart';
 
 class DashboardAppBar extends DefaultAppBarState {
   const DashboardAppBar({super.key});
@@ -14,7 +16,9 @@ class DashboardAppBar extends DefaultAppBarState {
     return Row(children: [
       const Expanded(child: _SearchField()),
       gap,
-      _CartButton(count: ProductsRepository().numberOfItemsInCart),
+      _CartButton(
+          count: ProductsRepository().numberOfItemsInCart,
+          onPressed: Routing.fromAppPage(context, EAppPages.myCart)),
       gap,
       const _ActionButton(icon: Icons.notifications_none_sharp)
     ]);

@@ -9,19 +9,17 @@ class ShortProductInfoCard extends StatelessWidget {
       {Key? key,
       required this.product,
       double? superHPadding,
-      this.onAddToCart})
+      this.trailing,
+      this.trailingPadding})
       : superHPadding = superHPadding ?? 0.0,
         super(key: key);
 
   final Product product;
   final double superHPadding;
 
-  final ValueChanged<Product>? onAddToCart;
+  final EdgeInsets? trailingPadding;
 
-  void _onAddToCart() {
-    onAddToCart?.call(product);
-  }
-
+  final Widget? trailing;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -65,16 +63,15 @@ class ShortProductInfoCard extends StatelessWidget {
                 TextWidget.bold(
                     data: '\$${product.price}', color: theme.primaryColor),
               ]),
-          const Spacer(),
-          Padding(
-            padding: const EdgeInsets.symmetric(
-                horizontal: horizontalLeadingPadding),
-            child: IconButton(
-              onPressed: _onAddToCart,
-              icon: Icon(Icons.add_shopping_cart_outlined,
-                  color: theme.primaryColor),
-            ),
-          )
+          if (trailing != null) ...[
+            const Spacer(),
+            Padding(
+              padding: trailingPadding ??
+                  const EdgeInsets.symmetric(
+                      horizontal: horizontalLeadingPadding),
+              child: trailing!,
+            )
+          ]
         ]),
       ),
     );

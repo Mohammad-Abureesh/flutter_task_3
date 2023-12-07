@@ -24,15 +24,25 @@ class ShortProductsInfoListView extends StatelessWidget {
     if (products.isEmpty) return const EmptyListView();
 
     const SizedBox gap = SizedBox(height: 10.0);
+
+    builder(Product value) {
+      Widget trailing = IconButton(
+          onPressed: () => onAddToCart?.call(value),
+          icon: Icon(Icons.add_shopping_cart_outlined,
+              color: Theme.of(context).primaryColor));
+
+      return ShortProductInfoCard(
+          superHPadding: padding?.horizontal,
+          trailing: trailing,
+          product: value);
+    }
+
     return ListView.separated(
         physics: const BouncingScrollPhysics(),
         padding: padding,
         itemCount: products.length,
         shrinkWrap: true,
-        itemBuilder: (_, index) => ShortProductInfoCard(
-            superHPadding: padding?.horizontal,
-            onAddToCart: onAddToCart,
-            product: products.elementAt(index)),
+        itemBuilder: (_, index) => builder(products.elementAt(index)),
         separatorBuilder: (_, index) => gap);
   }
 }
