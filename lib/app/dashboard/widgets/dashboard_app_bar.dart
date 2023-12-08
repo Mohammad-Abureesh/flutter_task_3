@@ -21,7 +21,9 @@ class DashboardAppBar extends DefaultAppBarState {
               count: ProductsRepository().numberOfItemsInCart,
               onPressed: Routing.fromAppPage(context, EAppPages.myCart))),
       gap,
-      const _ActionButton(icon: Icons.notifications_none_sharp)
+      _ActionButton(
+          icon: Icons.notifications_none_sharp,
+          onPressed: Routing.fromAppPage(context, EAppPages.notifications))
     ]);
   }
 
