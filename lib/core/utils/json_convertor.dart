@@ -18,6 +18,13 @@ class JsonConvertor<R> {
     }
   }
 
+  ///To return safe iterable from json all item from type of <R>
+  /// maybe return empty if an error in [jsonData]
+  Iterable<R> safeIterable(
+      dynamic jsonData, ObjectConvertorFromJson<R> convertor) {
+    return nullableIterable(jsonData, convertor)?.whereType<R>() ?? [];
+  }
+
   R? _object(Map<String, dynamic> json, ObjectConvertorFromJson<R> convertor) {
     try {
       return convertor.call(json);

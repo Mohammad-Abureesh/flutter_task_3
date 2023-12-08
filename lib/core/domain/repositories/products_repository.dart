@@ -1,10 +1,8 @@
-import 'dart:convert';
-
-import 'package:flutter/services.dart';
 import 'package:flutter_task_3/core/domain/entities/cart_item.dart';
 import 'package:flutter_task_3/core/domain/entities/favorite_item.dart';
 import 'package:flutter_task_3/core/domain/repositories/users_repository.dart';
 import 'package:flutter_task_3/core/enums/e_favorite_type.dart';
+import 'package:flutter_task_3/core/utils/fetch_test_json.dart';
 
 import '/core/domain/entities/product.dart';
 import '/core/domain/entities/products_response.dart';
@@ -25,14 +23,10 @@ class ProductsRepository {
   List<FavoriteItem>? _favorites;
 
   Future<void> init() async {
-    var json = await _fetchData();
+    var json = await FetchTestJson(
+      'products',
+    ).fetchData;
     _data = ProductsResponse.fromJson(json);
-  }
-
-  Future<Map<String, dynamic>> _fetchData() async {
-    final String response =
-        await rootBundle.loadString('assets/test/products.json');
-    return Map.from(await json.decode(response));
   }
 
   int get numberOfItemsInCart => _myCart.length;
