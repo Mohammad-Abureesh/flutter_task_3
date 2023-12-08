@@ -39,6 +39,11 @@ class ProductsRepository {
 
   List<CartItem> get allInMyCart => _myCart;
 
+  List<Product> get allProductsInMyCart {
+    if (allInMyCart.isEmpty) return [];
+    return allInMyCart.map((e) => _findProductById(e.productId)).toList();
+  }
+
   List<Product> get products => _data.products;
 
   List<Product> get forYouProducts =>

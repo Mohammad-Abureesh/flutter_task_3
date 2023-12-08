@@ -13,22 +13,28 @@ class PaymentSuccessfulScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: GeneralAppBar(title: 'Payment'),
-      body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.check_circle,
-                color: Theme.of(context).primaryColor, size: 60.0),
-            gap,
-            const TextWidget(data: 'Payment Successful!', size: 18.0),
-            const TextWidget(
-                data: 'Your order will be processed an sent to '
-                    'you as soon as possible'),
-            gap,
-            SubmitButton(
-                title: 'Continue Shopping',
-                onPressed: Navigator.of(context).pop)
-          ]),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.check_circle,
+                  color: Theme.of(context).primaryColor, size: 60.0),
+              gap,
+              const TextWidget(data: 'Payment Successful!', size: 18.0),
+              gap,
+              const TextWidget(
+                  data: 'Your order will be processed an sent to '
+                      'you as soon as possible',
+                  textAlign: TextAlign.center),
+              gap,
+              gap,
+              SubmitButton(
+                  title: 'Continue Shopping',
+                  onPressed: Navigator.of(context).pop)
+            ]),
+      ),
     );
   }
 }
