@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/core/enums/e_app_pages.dart';
 import 'package:flutter_task_3/core/enums/e_profile_settings.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
-import 'package:flutter_task_3/core/utils/pages_manager.dart';
-import 'package:flutter_task_3/core/utils/routing.dart';
-import 'package:flutter_task_3/core/utils/session.dart';
 
 class ProfileSettingListTile extends StatelessWidget {
   const ProfileSettingListTile({Key? key, required this.value})
@@ -14,11 +10,7 @@ class ProfileSettingListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     onTap() {
-      if (value == EProfileSettings.logout) {
-        Session.destroySession();
-        Routing.replace(
-            context, PagesManager.routeBuilder(EAppPages.login).call());
-      }
+      value.impl(context);
     }
 
     return Card(

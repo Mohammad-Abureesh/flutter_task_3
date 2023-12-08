@@ -1,7 +1,10 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_task_3/core/domain/entities/user.dart';
+import 'package:flutter_task_3/core/enums/e_app_pages.dart';
 
+import 'routing.dart';
 import 'storage_utils.dart';
 
 const loggedUserKey = 'isLoggedUser';
@@ -42,7 +45,12 @@ class Session {
     }
   }
 
-  static void destroySession() {
+  void _destroySession() {
     StorageUtils.storage.remove(loggedUserKey);
+  }
+
+  static void logoutFromContext(BuildContext context) {
+    _session._destroySession();
+    Routing.replaceFromAppPage(context, EAppPages.login);
   }
 }

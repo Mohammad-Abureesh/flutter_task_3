@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_task_3/core/enums/e_app_pages.dart';
+import 'package:flutter_task_3/core/utils/routing.dart';
+import 'package:flutter_task_3/core/utils/session.dart';
 import 'package:flutter_task_3/core/utils/string_utils.dart';
 
 enum EProfileSettings {
@@ -19,4 +22,19 @@ enum EProfileSettings {
         faq => name.toUpperCase(),
         _ => StringUtils.capitalizeAndJoin(name),
       };
+
+  void impl(BuildContext context) {
+    if (this == EProfileSettings.logout) {
+      Session.logoutFromContext(context);
+      return;
+    }
+
+    var page = switch (this) {
+      myCards => EAppPages.myCards,
+      _ => null,
+    };
+    if (page == null) return;
+
+    Routing.fromAppPage(context, page)?.call();
+  }
 }
