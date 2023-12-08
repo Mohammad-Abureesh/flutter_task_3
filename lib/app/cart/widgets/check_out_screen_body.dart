@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_task_3/app/cart/controllers/check_out_screen_controller.dart';
 import 'package:flutter_task_3/app/cart/widgets/user_address_details.dart';
 import 'package:flutter_task_3/app/dashboard/widgets/product_details_card.dart';
-import 'package:flutter_task_3/core/enums/e_paymnets_methods.dart';
+import 'package:flutter_task_3/core/enums/e_payment_method.dart';
 import 'package:flutter_task_3/core/presentation/widgets/submit_button.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
 
@@ -93,7 +93,7 @@ class _CheckOutScreenBodyState extends State<CheckOutScreenBody> {
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: EPaymentsMethods.values
+                          children: EPaymentMethod.values
                               .map((e) => Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: TextButton(
