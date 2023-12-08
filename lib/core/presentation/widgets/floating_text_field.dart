@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
 
 class FloatingTextField extends StatelessWidget {
@@ -8,7 +9,7 @@ class FloatingTextField extends StatelessWidget {
 
   final String? hint;
 
-  final ValueChanged<String?>? validator;
+  final FormFieldValidator<String?>? validator;
 
   final bool obscure;
 
@@ -28,22 +29,29 @@ class FloatingTextField extends StatelessWidget {
   final ValueChanged<String?>? onChanged;
 
   final Widget? prefixIcon;
+
+  final AutovalidateMode? validateMode;
+
+  final List<TextInputFormatter>? inputFormatters;
+
   const FloatingTextField(
       {Key? key,
-      this.controller,
       this.label,
       this.hint,
-      this.validator,
-      this.obscure = false,
-      this.textAlign = TextAlign.start,
-      this.padding,
+      this.counterText,
+      this.controller,
       this.maxLength,
       this.radius,
-      this.counterText,
+      this.obscure = false,
       this.focusNode,
-      this.onChanged,
       this.prefixIcon,
-      this.textAlignVertical})
+      this.onChanged,
+      this.validator,
+      this.padding,
+      this.textAlign = TextAlign.start,
+      this.textAlignVertical,
+      this.validateMode,
+      this.inputFormatters})
       : super(key: key);
 
   @override
@@ -68,6 +76,9 @@ class FloatingTextField extends StatelessWidget {
                 textAlign: textAlign,
                 focusNode: focusNode,
                 onChanged: onChanged,
+                validator: validator,
+                inputFormatters: inputFormatters,
+                autovalidateMode: validateMode,
                 textAlignVertical: textAlignVertical,
                 decoration: InputDecoration(
                     prefixIcon: prefixIcon,
