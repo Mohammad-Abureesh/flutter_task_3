@@ -11,10 +11,10 @@ class NotificationsScreenController with ChangeNotifier {
   Future<void> init() async {
     _progress = true;
     var json = await FetchTestJson(
-      'products',
+      'notifications',
     ).fetchData;
     activity = JsonConvertor<NotificationEntity>()
-        .safeIterable(json, NotificationEntity.fromJson)
+        .safeIterable(json['notifications'], NotificationEntity.fromJson)
         .toList();
 
     _progress = false;

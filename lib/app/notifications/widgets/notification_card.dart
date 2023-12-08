@@ -10,12 +10,15 @@ class NotificationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: ListTile(
-        leading: CircleAvatar(
-          child: Icon(item.icon, color: Theme.of(context).primaryColor),
-        ),
-        title: TextWidget.bold(data: item.title),
-        subtitle: TextWidget(data: '${item.description}\n${item.date}'),
-      ),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          leading: CircleAvatar(
+              radius: 15.0,
+              backgroundColor: Colors.grey.shade200,
+              child: Icon(item.icon,
+                  color: Theme.of(context).primaryColor, size: 15.0)),
+          title: TextWidget.bold(data: item.title),
+          subtitle: TextWidget(data: '\n${item.description}\n\n${item.date}')),
     );
   }
 }

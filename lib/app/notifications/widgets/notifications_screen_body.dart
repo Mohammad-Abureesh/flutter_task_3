@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '/app/notifications/controllers/notifications_screen_controller.dart';
-import '/core/presentation/widgets/text_widget.dart';
 import 'activity_notifications_list_view.dart';
+import 'notifications_view.dart';
 import 'promotions_notifications_list_view.dart';
 
 class NotificationsScreenBody extends StatefulWidget {
@@ -36,14 +36,17 @@ class _NotificationsScreenBodyState extends State<NotificationsScreenBody> {
           ? const CircularProgressIndicator()
           : SingleChildScrollView(
               child: Column(
-                children: [
-                  const TextWidget(data: 'Promotions'),
-                  const PromotionsNotificationsListView.empty(),
-                  const TextWidget(data: 'Your Activity'),
-                  ActivityNotificationsListView(data: _controller.activity)
-                ],
-              ),
-            ),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  const NotificationsView(
+                      title: 'Promotions',
+                      child: PromotionsNotificationsListView.empty()),
+                  const SizedBox(height: 20.0),
+                  NotificationsView(
+                      title: 'Your Activity',
+                      child: ActivityNotificationsListView(
+                          data: _controller.activity)),
+                ])),
     );
   }
 }
