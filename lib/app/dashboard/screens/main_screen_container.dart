@@ -20,7 +20,9 @@ class _MainScreenContainerState extends State<MainScreenContainer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: current.routeBuilder.call(),
+        body: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 850),
+            child: current.routeBuilder.call()),
         bottomNavigationBar: DashboardBottomNavigationBar(onSelect: onSelect));
   }
 }
