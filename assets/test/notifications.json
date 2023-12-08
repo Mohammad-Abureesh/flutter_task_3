@@ -1,0 +1,22 @@
+{
+  "notifications": [
+    {
+      "title": "Order Arrived",
+      "description": "Order 7342648726364827 has been completed and arrived at the destination address please rate your order",
+      "logo": "0xe857",
+      "date": "Yesterday 10:45 AM"
+    },
+    {
+      "title": "Order Success",
+      "description": "Order 7342648726364827 has been completed and arrived at the destination address please rate your order",
+      "logo": "0xe857",
+      "date": "Yesterday 10:45 AM"
+    },
+    {
+      "title": "Payment confirmed",
+      "description": "Order 7342648726364827 has been completed and arrived at the destination address please rate your order",
+      "logo": "0xe857",
+      "date": "Oct 15 2023 10:45 AM"
+    }
+  ]
+}
