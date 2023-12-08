@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/profile/widgets/profile_setting_list_tile.dart';
+import 'package:flutter_task_3/app/profile/profile_dashboard/widgets/profile_setting_list_tile.dart';
 import 'package:flutter_task_3/core/enums/e_profile_settings.dart';
 
 class ProfileSettingsListView extends StatelessWidget {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/app/profile/controllers/profile_screen_controller.dart';
-import 'package:flutter_task_3/app/profile/widgets/profile_settings_list_view.dart';
-import 'package:flutter_task_3/app/profile/widgets/user_avatar.dart';
+
+import '/app/profile/profile_dashboard/controllers/profile_screen_controller.dart';
+import '/app/profile/profile_dashboard/widgets/profile_settings_list_view.dart';
+import '/app/profile/profile_dashboard/widgets/user_avatar.dart';
 
 class UserProfileScreenBody extends StatelessWidget {
   UserProfileScreenBody({Key? key})
