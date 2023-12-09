@@ -18,31 +18,8 @@ enum EPaymentMethod {
   const EPaymentMethod(this.icon);
   final IconData icon;
 
-  factory EPaymentMethod.fromCardNumber(String cardNumber) {
-    cardNumber = cardNumber.replaceAll(RegExp(r'\D'), '');
-    if (cardNumber.length < 16) return unknown;
-
-    return EPaymentMethod._findOrDefault(
-      (e) => e._validatorRegex.hasMatch(
-        cardNumber,
-      ),
-    );
-  }
-
-  factory EPaymentMethod._findOrDefault(bool Function(EPaymentMethod) test) {
+  factory EPaymentMethod.findOrDefault(bool Function(EPaymentMethod) test) {
     return values.firstWhereOrNull(test) ?? unknown;
-  }
-  RegExp get _validatorRegex {
-    return switch (this) {
-      visa => RegExp(r'^4[0-9]{12}(?:[0-9]{3})?$'),
-      masterCard => RegExp(
-          r'^5[1-5][0-9]{14}$|^2(22[1-9]|2[3-9][0-9]|[3-6][0-9]{2}|7[0-1][0-9]|720)\d{12}$'),
-      paypal => RegExp(
-          r'^((?:4026|417500|4508|4844|491(3|7))\d{12})|(?:4[0-9]{12}(?:[0-9]{3})?)$'),
-      applePay => RegExp(r'^(?:5[06-8]\d{14})$'),
-      googlePay => RegExp(r'^(?:4\d{15}|4\d{3}-\d{4}-\d{4}-\d{4})$'),
-      _ => RegExp('')
-    };
   }
 
   Color get background =>
