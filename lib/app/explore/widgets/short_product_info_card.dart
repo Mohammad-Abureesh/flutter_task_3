@@ -5,13 +5,14 @@ import '/core/domain/entities/product.dart';
 import '/core/presentation/widgets/text_widget.dart';
 
 class ShortProductInfoCard extends StatelessWidget {
-  const ShortProductInfoCard(
-      {Key? key,
-      required this.product,
-      double? superHPadding,
-      this.trailing,
-      this.trailingPadding})
-      : superHPadding = superHPadding ?? 0.0,
+  const ShortProductInfoCard({
+    Key? key,
+    required this.product,
+    double? superHPadding,
+    this.trailing,
+    this.trailingPadding,
+    this.disableDetailsRoute = false,
+  })  : superHPadding = superHPadding ?? 0.0,
         super(key: key);
 
   final Product product;
@@ -20,6 +21,8 @@ class ShortProductInfoCard extends StatelessWidget {
   final EdgeInsets? trailingPadding;
 
   final Widget? trailing;
+
+  final bool disableDetailsRoute;
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -36,7 +39,9 @@ class ShortProductInfoCard extends StatelessWidget {
     final borderRadius = BorderRadius.circular(radius);
     return InkWell(
       borderRadius: borderRadius,
-      onTap: product.openProductInfoScreenCallback(context),
+      onTap: disableDetailsRoute
+          ? null
+          : product.openProductInfoScreenCallback(context),
       child: Card(
         elevation: 4.0,
         shadowColor: Colors.grey.shade200,
