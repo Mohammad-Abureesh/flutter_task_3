@@ -34,6 +34,6 @@ class CheckOutScreenController with ChangeNotifier {
   String get username => _user.username;
 
   void payNow(BuildContext context) {
-    Routing.of(context, const PaymentSuccessfulScreen())?.call();
+    Routing.replace(context, const PaymentSuccessfulScreen());
   }
 }

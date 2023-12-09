@@ -14,16 +14,12 @@ class UserAddressDetails extends StatelessWidget {
     String data = '';
 
     if (address != null) {
-      data = '''
-        $name, ${address!.phone}
-        ${address!.street}
-        ${address!.city}-${address!.zipCode}''';
+      data = '$name, ${address!.phone}'
+          '\n${address!.street}'
+          '\n${address!.city}-${address!.zipCode}';
     }
-    return Card(
-        child: Row(
-      children: [
-        TextWidget(data: data, color: Theme.of(context).hintColor),
-      ],
-    ));
+    return Row(children: [
+      TextWidget(data: data, size: 18.0, color: Theme.of(context).hintColor)
+    ]);
   }
 }

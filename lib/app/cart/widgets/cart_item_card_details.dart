@@ -29,6 +29,7 @@ class CartItemCard extends StatelessWidget {
     return ShortProductInfoCard(
         superHPadding: 20.0,
         product: product,
+        disableDetailsRoute: true,
         trailing: _CounterChile(
           value: item.quantity,
           add: add,

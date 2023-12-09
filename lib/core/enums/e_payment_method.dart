@@ -47,4 +47,9 @@ enum EPaymentMethod {
 
   Color get background =>
       switch (this) { visa => Pallet.lightBlack, _ => Pallet.silver };
+
+  static List<EPaymentMethod> get allowedMethods {
+    final unAllowed = [EPaymentMethod.unknown];
+    return values.where((method) => !unAllowed.contains(method)).toList();
+  }
 }
