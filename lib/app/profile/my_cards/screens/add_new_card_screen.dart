@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_task_3/core/presentation/widgets/general_app_bar.dart';
+
+import '/app/profile/my_cards/widgets/add_new_card_screen_body.dart';
+import '/core/presentation/widgets/general_app_bar.dart';
 
 class AddNewCardScreen extends StatelessWidget {
   const AddNewCardScreen({Key? key}) : super(key: key);
@@ -7,7 +9,7 @@ class AddNewCardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: GeneralAppBar(title: 'Add New Card'),
-    );
+        appBar: GeneralAppBar(title: 'Add New Card'),
+        body: const AddNewCardScreenBody());
   }
 }

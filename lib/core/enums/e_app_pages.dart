@@ -8,5 +8,6 @@ enum EAppPages {
   favorites,
   myCart,
   notifications,
-  myCards;
+  myCards,
+  addNewCard;
 }
