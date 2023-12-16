@@ -20,4 +20,9 @@ class ShippingAddressScreenController with ChangeNotifier {
     selected = value;
     notifyListeners();
   }
+
+  bool isSelected(int index) {
+    if (selected == null) return false;
+    return addresses.indexOf(selected!) == index;
+  }
 }

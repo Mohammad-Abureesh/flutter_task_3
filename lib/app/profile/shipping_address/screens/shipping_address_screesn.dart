@@ -4,13 +4,13 @@ import 'package:flutter_task_3/app/profile/shipping_address/widgets/shipping_add
 import 'package:flutter_task_3/core/presentation/widgets/general_app_bar.dart';
 
 class ShippingAddressScreen extends StatelessWidget {
-  const ShippingAddressScreen({Key? key}) : super(key: key);
+  ShippingAddressScreen({Key? key}) : super(key: key);
+
+  final ShippingAddressScreenController controller =
+      ShippingAddressScreenController();
 
   @override
   Widget build(BuildContext context) {
-    ShippingAddressScreenController controller =
-        ShippingAddressScreenController();
-
     return Scaffold(
         appBar: GeneralAppBar(title: 'Shipping Address', actions: [
           IconButton(

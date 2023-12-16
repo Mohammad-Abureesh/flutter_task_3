@@ -9,6 +9,7 @@ import 'package:flutter_task_3/app/notifications/screens/notifications_screen.da
 import 'package:flutter_task_3/app/profile/my_cards/screens/add_new_card_screen.dart';
 import 'package:flutter_task_3/app/profile/my_cards/screens/my_cards_screen.dart';
 import 'package:flutter_task_3/app/profile/profile_dashboard/screens/user_profile_dashboard.dart';
+import 'package:flutter_task_3/app/profile/shipping_address/screens/shipping_address_screesn.dart';
 import 'package:flutter_task_3/app/registration/login/screens/login_screen.dart';
 import 'package:flutter_task_3/core/enums/e_app_pages.dart';
 
@@ -31,6 +32,7 @@ class PagesManager {
       EAppPages.notifications => () => const NotificationsScreen(),
       EAppPages.myCards => () => const MyCardsScreen(),
       EAppPages.addNewCard => () => const AddNewCardScreen(),
+      EAppPages.shippingAddress => () => ShippingAddressScreen(),
     };
 
     return builder;

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_task_3/app/profile/shipping_address/controllers/shipping_address_screen_controller.dart';
 import 'package:flutter_task_3/core/presentation/widgets/text_widget.dart';
 
+import 'selected_border.dart';
 import 'shipping_address_card.dart';
 
 class ShippingAddressScreenBody extends StatefulWidget {
@@ -37,8 +38,16 @@ class _ShippingAddressScreenBodyState extends State<ShippingAddressScreenBody> {
         Expanded(
             child: ListView.builder(
                 itemCount: controller.addresses.length,
-                itemBuilder: (_, index) => ShippingAddressCard(
-                    address: controller.addresses.elementAt(index))))
+                itemBuilder: (_, index) => Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 5.0),
+                      child: SelectedBorder(
+                        enabled: controller.isSelected(index),
+                        child: ShippingAddressCard(
+                            onChanged: controller.onChangeAddress,
+                            address: controller.addresses.elementAt(index)),
+                      ),
+                    )))
       ],
     );
   }

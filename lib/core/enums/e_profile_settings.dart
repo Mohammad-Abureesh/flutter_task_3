@@ -31,6 +31,7 @@ enum EProfileSettings {
 
     var page = switch (this) {
       myCards => EAppPages.myCards,
+      shippingAddress => EAppPages.shippingAddress,
       _ => null,
     };
     if (page == null) return;
