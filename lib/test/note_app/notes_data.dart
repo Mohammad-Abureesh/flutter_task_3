@@ -12,6 +12,10 @@ class NotesRepository {
 
   Future<void> saveNote(Note note) async {
     all.add(note);
+    await _refreshData();
+  }
+
+  Future<void> _refreshData() async {
     await _saveAllToStorage();
     await readAll();
   }
@@ -32,5 +36,11 @@ class NotesRepository {
             .toList() ??
         [];
     return all;
+  }
+
+  Future<void> updateNote(Note note) async {
+    if (all.isEmpty) return;
+    all[all.indexOf(note)] = note;
+    await _refreshData();
   }
 }
