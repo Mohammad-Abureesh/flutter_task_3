@@ -10,5 +10,6 @@ enum EAppPages {
   notifications,
   myCards,
   addNewCard,
-  shippingAddress;
+  shippingAddress,
+  languageSettings;
 }

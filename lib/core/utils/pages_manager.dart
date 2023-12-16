@@ -6,6 +6,7 @@ import 'package:flutter_task_3/app/dashboard/screens/main_screen_container.dart'
 import 'package:flutter_task_3/app/explore/screens/search_dashboard.dart';
 import 'package:flutter_task_3/app/favorites/screens/favorites_dashboard.dart';
 import 'package:flutter_task_3/app/notifications/screens/notifications_screen.dart';
+import 'package:flutter_task_3/app/profile/language/screens/language_screen.dart';
 import 'package:flutter_task_3/app/profile/my_cards/screens/add_new_card_screen.dart';
 import 'package:flutter_task_3/app/profile/my_cards/screens/my_cards_screen.dart';
 import 'package:flutter_task_3/app/profile/profile_dashboard/screens/user_profile_dashboard.dart';
@@ -33,6 +34,7 @@ class PagesManager {
       EAppPages.myCards => () => const MyCardsScreen(),
       EAppPages.addNewCard => () => const AddNewCardScreen(),
       EAppPages.shippingAddress => () => ShippingAddressScreen(),
+      EAppPages.languageSettings => () => const LanguageScreen(),
     };
 
     return builder;
