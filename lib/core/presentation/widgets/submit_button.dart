@@ -8,13 +8,25 @@ class SubmitButton extends StatelessWidget {
   final String? title;
 
   final double radius;
-  const SubmitButton({Key? key, this.onPressed, this.title, this.radius = 8})
+  final double? fontSize;
+
+  final Color? color;
+
+  const SubmitButton(
+      {Key? key,
+      this.onPressed,
+      this.title,
+      this.radius = 8,
+      this.fontSize,
+      this.color})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Widget? child;
-    if (title != null) child = TextWidget(data: title!, color: Colors.white);
+    if (title != null) {
+      child = TextWidget(data: title!, color: Colors.white, size: fontSize);
+    }
 
     return ElevatedButton(
         style: ButtonStyle(
@@ -23,7 +35,7 @@ class SubmitButton extends StatelessWidget {
           shape: MaterialStatePropertyAll(RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius))),
           backgroundColor:
-              MaterialStatePropertyAll(Theme.of(context).primaryColor),
+              MaterialStatePropertyAll(color ?? Theme.of(context).primaryColor),
         ),
         onPressed: onPressed,
         child: child);
