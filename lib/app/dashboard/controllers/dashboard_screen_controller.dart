@@ -13,8 +13,8 @@ class DashboardScreenController {
   List<Product> fromFilter(ProductsFilter filter) {
     return switch (filter) {
       ProductsFilter.forYou => _repository.forYouProducts,
-      ProductsFilter.featured => _repository.bestRatingProducts,
-      ProductsFilter.bestSelling => _repository.bestRatingProducts
+      ProductsFilter.featured => _repository.forYouProducts,
+      ProductsFilter.bestSelling => _repository.forYouProducts
     };
   }
 }

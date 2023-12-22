@@ -4,11 +4,12 @@ import 'package:flutter_task_3/core/presentation/widgets/default_search_app_bar.
 import 'search_filter_button.dart';
 
 class SearchDashboardAppBar extends DefaultSearchAppBar {
-  const SearchDashboardAppBar({ValueChanged<String?>? onSearch, Key? key})
+  SearchDashboardAppBar(
+      {ValueChanged<String?>? onSearch, VoidCallback? onFilter, Key? key})
       : super(
             key: key,
             onSearch: onSearch,
             title: 'Search',
             searchHint: 'Search Here...',
-            suffix: const SearchFilterButton());
+            suffix: SearchFilterButton(onPressed: onFilter));
 }

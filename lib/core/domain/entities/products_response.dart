@@ -6,14 +6,14 @@ class ProductsResponse {
 
   int? _total;
 
-  ProductsResponse._(this._products, this._total);
+  ProductsResponse(this._products, this._total);
 
-  factory ProductsResponse.fromJson(Map<String, dynamic> json) {
-    return ProductsResponse._(
+  factory ProductsResponse.fromJson(json) {
+    return ProductsResponse(
         JsonConvertor<Product>()
-            .nullableIterable(json['products'], Product.fromJson)
+            .nullableIterable(json, Product.fromJson)
             ?.toList(),
-        json['total']);
+        0);
   }
 
   int get total => _total ?? 0;

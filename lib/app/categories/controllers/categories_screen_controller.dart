@@ -9,7 +9,7 @@ class CategoriesScreenController with SearchMixin, ChangeNotifier {
 
   List<CategoryEntity> categories;
   Future<void> init() async {
-    categories = CategoriesRepository().extractCategoriesFromProducts
+    categories = await CategoriesRepository().categories()
       ..shuffle();
   }
 

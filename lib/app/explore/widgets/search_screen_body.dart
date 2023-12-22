@@ -26,10 +26,12 @@ class _SearchScreenBodyState extends State<SearchScreenBody> {
   @override
   Widget build(BuildContext context) {
     const double padding = 20.0;
-    return ShortProductsInfoListView(
-        padding: const EdgeInsets.only(
-            top: padding * 2, left: padding, right: padding),
-        onAddToCart: ProductsRepository().addToMyCart,
-        products: widget.controller.products);
+    return widget.controller.loading
+        ? const Center(child: CircularProgressIndicator())
+        : ShortProductsInfoListView(
+            padding: const EdgeInsets.only(
+                top: padding * 2, left: padding, right: padding),
+            onAddToCart: ProductsRepository().addToMyCart,
+            products: widget.controller.products);
   }
 }

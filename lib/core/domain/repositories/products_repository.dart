@@ -1,8 +1,9 @@
 import 'package:flutter_task_3/core/domain/entities/cart_item.dart';
+import 'package:flutter_task_3/core/domain/entities/category_entity.dart';
 import 'package:flutter_task_3/core/domain/entities/favorite_item.dart';
+import 'package:flutter_task_3/core/domain/gateway/products_gateway.dart';
 import 'package:flutter_task_3/core/domain/repositories/users_repository.dart';
 import 'package:flutter_task_3/core/enums/e_favorite_type.dart';
-import 'package:flutter_task_3/core/utils/fetch_test_json.dart';
 
 import '/core/domain/entities/product.dart';
 import '/core/domain/entities/products_response.dart';
@@ -12,7 +13,7 @@ const int _defaultLimit = 10;
 class ProductsRepository {
   static final ProductsRepository _repo = ProductsRepository._internalRepo();
 
-  ProductsRepository._internalRepo();
+  ProductsRepository._internalRepo() : _gateway = ProductsGateway();
 
   factory ProductsRepository() => _repo;
 
@@ -22,11 +23,11 @@ class ProductsRepository {
 
   List<FavoriteItem>? _favorites;
 
+  final ProductsGateway _gateway;
+
   Future<void> init() async {
-    var json = await FetchTestJson(
-      'products',
-    ).fetchData;
-    _data = ProductsResponse.fromJson(json);
+    var data = await _gateway.products();
+    _data = ProductsResponse(data, data.length);
   }
 
   int get numberOfItemsInCart => _myCart.length;
@@ -132,5 +133,13 @@ class ProductsRepository {
     if (_favorites == null) return false;
     _favorites!.removeWhere((e) => e.id == product.id);
     return true;
+  }
+
+  Future<List<Product>> productsByQuery(String query) {
+    return _gateway.products(params: query);
+  }
+
+  Future<List<Product>> byCategory(CategoryEntity category) {
+    return productsByQuery('categoryId=${category.id}');
   }
 }

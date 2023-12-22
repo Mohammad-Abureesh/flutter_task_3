@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_task_3/core/domain/entities/user.dart';
+import 'package:flutter_task_3/core/domain/repositories/users_repository.dart';
 import 'package:flutter_task_3/core/enums/e_app_pages.dart';
 
 import 'routing.dart';
@@ -23,9 +24,11 @@ class Session {
     if (saveSession) _session._saveUser(user);
   }
 
-  static void initFromStorage() {
-    if (!isLogged) return;
-    _session._user = _session._userFromStorage!;
+  static Future<bool> initFromStorage() async {
+    if (!isLogged) return false;
+    var user = await UsersRepository().loginViaAccessToken(_token);
+    if (user != null) _session._user = user;
+    return user != null;
   }
 
   void _saveUser(User user) async {
@@ -33,20 +36,12 @@ class Session {
         .setString(loggedUserKey, jsonEncode(user.toJson));
   }
 
-  static bool get isLogged => _session._userFromStorage != null;
-
-  User? get _userFromStorage {
-    try {
-      var json = StorageUtils.storage.getString(loggedUserKey);
-      if (json == null) return null;
-      return User.fromJson(jsonDecode(json));
-    } catch (_) {
-      return null;
-    }
-  }
+  static String? get _token => StorageUtils.storage.getString('token');
+  static bool get isLogged => _token != null;
 
   void _destroySession() {
     StorageUtils.storage.remove(loggedUserKey);
+    StorageUtils.storage.remove('token');
   }
 
   static void logoutFromContext(BuildContext context) {

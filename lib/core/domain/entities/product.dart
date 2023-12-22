@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_task_3/app/dashboard/screens/product_info_screen.dart';
+import 'package:flutter_task_3/core/domain/entities/category_entity.dart';
 import 'package:flutter_task_3/core/utils/routing.dart';
 
 class Product {
@@ -9,7 +10,7 @@ class Product {
   final String? _image;
   final String? _name;
   final String? _description;
-  final String? _category;
+  final CategoryEntity? _category;
 
   final num? _price;
   final num? _rating;
@@ -39,10 +40,10 @@ class Product {
     }
     return Product._(
         json['id'],
-        json['thumbnail'],
+        json['thumbnail'] ?? slider?.firstOrNull,
         json['title'],
         json['description'],
-        json['category'],
+        CategoryEntity.fromJson(json['category']),
         json['price'],
         json['rating'],
         json['stock'],
@@ -59,7 +60,7 @@ class Product {
   double get priceWithDiscount => (price % discountPercentage).roundToDouble();
 
   String get name => _name ?? '';
-  String get category => _category ?? '';
+  String get category => _category?.title ?? '';
   String get description => _description ?? '';
   String get image => _image ?? '';
 

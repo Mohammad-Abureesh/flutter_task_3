@@ -31,12 +31,14 @@ class SingUpScreenController extends RegisterFormController {
         password: passwordController.text.trim());
 
     final repo = UsersRepository();
-    if (repo.isExist(user)) return;
+    // if (repo.isExist(user)) return;
 
-    bool verified = await _openVerificationScreen(context!);
-    if (!verified) return;
-
-    await repo.create(user);
-    if (context.mounted) Navigator.pop(context);
+    var success = await repo.create(user);
+    if (!success) return;
+    // bool verified = await _openVerificationScreen(context!);
+    // if (!verified) return;
+    if (context == null) return;
+    if (!context.mounted) return;
+    if (context.mounted == true) Navigator.of(context).pop();
   }
 }

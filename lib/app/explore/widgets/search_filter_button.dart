@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 class SearchFilterButton extends StatelessWidget {
-  const SearchFilterButton({Key? key, this.onFilter}) : super(key: key);
+  const SearchFilterButton({Key? key, this.onFilter, this.onPressed})
+      : super(key: key);
 
   final ValueChanged<Map<String, dynamic>>? onFilter;
+  final VoidCallback? onPressed;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -21,11 +24,7 @@ class SearchFilterButton extends StatelessWidget {
                 padding: const EdgeInsets.all(2.0),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18.0))),
-            onPressed: _submitFilter,
+            onPressed: onPressed,
             child: Icon(Icons.tune, color: theme.primaryColor)));
-  }
-
-  void _submitFilter() {
-    //todo:add filter implementation
   }
 }

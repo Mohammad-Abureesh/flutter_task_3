@@ -1,8 +1,11 @@
 import 'package:flutter_task_3/core/domain/entities/address.dart';
+import 'package:flutter_task_3/core/domain/entities/login_request.dart';
+import 'package:flutter_task_3/core/domain/gateway/user_gateway.dart';
+import 'package:flutter_task_3/core/utils/storage_utils.dart';
 
 import '/core/domain/entities/user.dart';
 
-final _testAddress = [
+final testAddress = [
   Address('Hebron', '+97043247327', 'Aka', '0P1763'),
   Address('Street school,Official-Sch', '+099429341231', 'Al-zarka', 'MR0182'),
 ];
@@ -10,30 +13,29 @@ final _testAddress = [
 class UsersRepository {
   static final UsersRepository _repo = UsersRepository._internalRepo();
 
-  UsersRepository._internalRepo();
+  UsersRepository._internalRepo() : _gateway = UserGateway();
 
   factory UsersRepository() => _repo;
 
-  final List<User> _users = [
-    User.create(
-        username: 'mm', email: 'mm', password: 'mm', address: _testAddress)
-  ];
+  final UserGateway _gateway;
 
-  bool isExist(User user) {
-    return _users.any((e) => e == user);
-  }
+  Future<bool> create(User user) => _gateway.singUp(user);
 
-  Future<void> create(User user) async {
-    _users.add(user);
+  Future<User?> loginViaAccessToken(String? token) async {
+    return _gateway.userProfile(token);
   }
 
   Future<User?> login(String nameOrEmail, String password) async {
-    return _findByCredential(nameOrEmail, password);
+    return loginViaAccessToken(
+        await _accessToken(LoginRequest(nameOrEmail, password)));
   }
 
-  Future<User?> _findByCredential(String nameOrEmail, String password) async {
-    return _users.firstWhereOrNull(
-        (element) => element.validCredential(nameOrEmail, password));
+  Future<String?> _accessToken(LoginRequest request) async {
+    String? accessToken = (await _gateway.login(request)).accessToken;
+    if (accessToken is String) {
+      StorageUtils.storage.setString('token', accessToken);
+    }
+    return accessToken;
   }
 }
 

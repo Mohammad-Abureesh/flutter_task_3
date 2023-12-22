@@ -9,11 +9,10 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(const Duration(seconds: 2), () {
+    Session.initFromStorage().then((isLogged) {
       EAppPages page;
 
-      if (Session.isLogged) {
-        Session.initFromStorage();
+      if (isLogged) {
         page = EAppPages.mainScreen;
       } else {
         page = EAppPages.login;
