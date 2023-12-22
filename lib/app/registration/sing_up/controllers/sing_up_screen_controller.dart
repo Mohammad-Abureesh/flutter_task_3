@@ -13,7 +13,7 @@ class SingUpScreenController extends RegisterFormController {
 
   TextEditingController nameController;
 
-  Future<bool> _openVerificationScreen(BuildContext context) async {
+  Future<bool> openVerificationScreen(BuildContext context) async {
     VerificationCodeGenerator().generate();
     return await Navigator.push<bool?>(context,
             MaterialPageRoute(builder: (_) => const VerificationScreen())) ??

@@ -22,7 +22,7 @@ class FilterProductsSheet extends StatelessWidget {
 }
 
 class _RangeSlider extends StatelessWidget {
-  _RangeSlider({super.key, this.onChanged})
+  _RangeSlider({this.onChanged})
       : _rangeNotifier = ValueNotifier<RangeValues>(const RangeValues(0, 1000));
 
   final ValueNotifier<RangeValues> _rangeNotifier;

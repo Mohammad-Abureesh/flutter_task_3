@@ -17,13 +17,13 @@ class NoteApp extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.event_note_outlined, size: 80.0),
-            TextWidget.bold(data: 'NOTE APP'),
-            SizedBox(height: 120.0),
+            const Icon(Icons.event_note_outlined, size: 80.0),
+            const TextWidget.bold(data: 'NOTE APP'),
+            const SizedBox(height: 120.0),
             SubmitButton(
                 onPressed: Routing.of(context, AddNewNoteScreen()),
                 title: 'Add new'),
-            SizedBox(height: 10.0),
+            const SizedBox(height: 10.0),
             SubmitButton(
                 onPressed: Routing.of(context, ViewALlNotes()),
                 title: 'View all'),
