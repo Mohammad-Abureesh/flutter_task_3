@@ -6,6 +6,6 @@ class ProductsGateway extends ApisManager {
   Future<List<Product>> products({String? params}) async {
     String path = ApisRoutes.products;
     if (params != null) path = '$path?$params';
-    return (await getList(path, Product.fromJson)).dataOrDefault([]);
+    return (await getList<Product>(path, Product.fromJson)).dataOrDefault([]);
   }
 }
