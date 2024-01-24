@@ -23,3 +23,11 @@ class Handler<R> {
     }
   }
 }
+
+extension IterableApiResponseExt<R> on ApiResponse<List<R>> {
+  List<R> get elementsOrEmpty => dataOrDefault([]);
+}
+
+extension AsyncIterableApiResponseExt<R> on Future<ApiResponse<List<R>>> {
+  Future<List<R>> get elementsOrEmpty async => (await this).elementsOrEmpty;
+}
